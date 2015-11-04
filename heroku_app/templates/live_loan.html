@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Lending Club Cracked</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style_2.css') }}">
+  <script type="text/javascript" src="{{ url_for('static', filename='jquery-latest.js') }}"></script> 
+  <script type="text/javascript" src="{{ url_for('static', filename='jquery.tablesorter.js') }} "></script> 
+  <script type="text/javascript">
+    $(function() {    
+    $("#myTable").tablesorter({sortList:[[0,0],[2,1]], widgets: ['zebra']});
+  }); 
+  </script>
+</head>
+  <body>
+  	<div id='cssmenu'>
+    	<ul>      
+      <li><a href="{{ url_for('index') }}"><span>Home</span></a></li>
+      <li><a href="{{ url_for('loanstats') }}"><span>Loan Stats</span></a></li>
+      <li><a href="{{ url_for('loan_input') }}"><span>My App</span></a></li>
+      <li><a href="{{ url_for('live_loans') }}"><span>Portfolio Builder</span></a></li>
+      <li><a href="{{ url_for('model') }}"><span>About the Model</span></a></li>
+      <li class='last'><a href="http://jingfengli.github.io/" target="_blank"><span>Hire Me</span></a></li>
+    	</ul>
+  	</div>
+    <div>
+      <div class="liveloanpic">
+      </div>
+      <div class="liveloandisc">
+        <div class="liveloantext">
+      
+          <h2>
+            How does it work?
+          </h2>
+          <p>
+            Portfolio Builder extracts the loans that are currently live in Lending Club. It then uses the model built for "Lend or Not" to assign a <font color="orange"> score </font> to each loan, which is then used to predict its chance of being successfully repaid (<font color="orange">success %</font>). It also computes the <font color="orange"> top </font> percentile of this particular loan. (A top score of 1 means it is in the top 1% of loans, beating 99% of loans with the same Lending Club grade). 
+            <br><br>
+            A loan with a score > 60 is a good loan. It is safe to invest.<br>
+            A loan with a score of 40-60 is a questionable loan. <br>
+            A loan with a score < 40 is a bad loan. It is unsafe to invest.
+            <br><br>
+            Loan ID, Borrower ID, FICO credit scores, loan term, and links are included. Loans are sorted by Loan ID by default. Feel free to sort using other criteria as you explore the loans.  
+            <br><br>
+            <div id='loans'>
+              As of {{TStrin}} (GMT), <font color="orange"> {{nLoans}}</font> loans are available:
+            </div>
+            <br>
+          </p>
+
+        </div> 
+      </div>
+      <div class="liveloantable">
+      <div>
+          {{table}}
+      </div>
+
+      </div>
+    </div>
+  </body>
+</html>
+
+

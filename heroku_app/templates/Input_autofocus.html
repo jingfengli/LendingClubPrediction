@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Lending Club Cracked</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style_2.css') }}">
+</head>
+<body>
+	<div id='cssmenu'>
+	  	<ul>
+          <li><a href="{{ url_for('index') }}"><span>Home</span></a></li>
+	      <li><a href="{{ url_for('loanstats') }}"><span>Loan Stats</span></a></li>
+	      <li><a href="{{ url_for('loan_input') }}"><span>My App</span></a></li>
+	      <li><a href="{{ url_for('live_loans') }}"><span>Portfolio Builder</span></a></li>
+	      <li><a href="{{ url_for('model') }}"><span>About the Model</span></a></li>
+	      <li class='last'><a href="http://jingfengli.github.io/" target="_blank"><span>Hire Me</span></a></li>
+	  	</ul>
+	</div>
+
+	<div class="inputbgpic">
+      <div class='loanpadd'>
+        <div class='inputtext'>        
+          <h2>
+            To fund or not to fund?
+          </h2>
+          <p>
+            Using historical data, I built an app that can predict the outcome of a given loan. This app reduces the chance of funding a failing loan by <font color="orange"> 50%</font>, compared to approaches used by current Lending Club users.
+            <br> <br> 
+          </p>
+	      <h2>
+            How to use it?
+          </h2>
+          <p>
+            To predict the outcome of a loan you are considering for investments, enter the loan’s information into the app and hit submit.  
+            <br>
+            You can also run demo predictions using historical data from real loans. Simply click on one of the “demo” buttons below.
+          </p>
+        </div>
+      </div>
+     <div class="inputcontainer" style="float:right">		
+		<nav class="codrops-demos">
+			<a class="current-demo" href="{{ url_for('loan_input_yourloan') }}">Your loan</a>
+			<a href="{{ url_for('loan_input_demo1') }}">Demo 1</a>
+			<a href="{{ url_for('loan_input_demo2') }}">Demo 2</a>
+			<a href="{{ url_for('loan_input_demo3') }}">Demo 3</a>
+			<a href="{{ url_for('loan_input_demo4') }}">Demo 4</a>
+		</nav>
+	    <form class="checkout" method = "post" >
+			<div class="checkout-header">	
+			  <h1 class="checkout-title">
+			    Loan: Fund or Not?
+			  </h1>
+			</div>
+
+			<p>
+			  Lending Club Grade, and Term<br>
+			  <input type="text" name = 'sub_grade' class="checkout-input checkout-name" placeholder="grade" autofocus>
+			  <input type="text" name = 'term' class="checkout-input checkout-left" placeholder="term" >
+			</p>
+			<p>
+			  Funded date (eg. Dec-2001 or still live) <br>
+			  <input type="text" name='issue_d' class="checkout-input checkout-whole" placeholder="issue_d ">
+			</p>
+			<p>
+			  FICO credit score <br>
+			  <input type="text" name = 'fico_range_low' class="checkout-input checkout-name" placeholder="fico_low">
+			  <input type="text" name = 'fico_range_high' class="checkout-input checkout-left" placeholder="fico_high">
+			</p>
+			<p>
+			  Loan, Income, and Debt-to-Income <br>
+			  <input type="text" name='loan_amnt' class="checkout-input checkout-name2" placeholder="loan_amnt">
+			  <input type="text" name='annual_inc' class="checkout-input checkout-right" placeholder="annual_inc">
+			  <input type="text" name='dti' class="checkout-input checkout-small" placeholder="DTI">
+			</p>
+			<p>
+			    Employment length
+			    <input type="text" name='emp_length' class="checkout-input checkout-whole" placeholder="emp_length ">
+			</p>
+			<p>
+			  Number of credit lines currently open <br>
+			  <input type="text" name='open_acc' class="checkout-input checkout-whole" placeholder="open_acc ">
+			</p>
+			<p>
+			  Total number of credit lines <br>
+			  <input type="text" name='total_acc' class="checkout-input checkout-whole" placeholder="total_acc ">
+			</p>
+			<p>
+			  Earliest credit line (eg. Dec-2001) <br>
+			  <input type="text" name='earliest_cr_line' class="checkout-input checkout-whole" placeholder="earliest_cr_line ">
+			</p>
+			<p>
+			  Public record, and Police code <br>
+			  <input type="text" name = 'pub_rec' class="checkout-input checkout-name" placeholder="pub_rec">
+			  <input type="text" name = 'policy_code' class="checkout-input checkout-left" placeholder="policy_code">
+			</p>
+
+			<p>
+			  House Ownership:
+			    <select name="home_ownership">
+			        <option selected="selected" value="OWN">Own</option>
+			        <option value="MORTGAGE">Mortgage</option>
+			        <option value="RENT">Rent</option>
+			        <option value="OTHER">Other</option>
+					<option value="ANY">Any</option>
+					<option value="NONE">Unknown</option>
+			    </select>
+			</p>
+			<p>
+			  <input type="submit" value="Submit" class="checkout-btn">
+			</p>
+			{% with messages = get_flashed_messages() %}
+			      {% if messages %}
+				  	  <br>
+			          <h2> <font color="red"> Error! </font></h2>
+			          Try a demo, or <br>
+			          Input the following information: <br>
+			          {% for message in messages %}
+			              {{ message }}
+			          {% endfor %}
+			          <br>
+			      {% endif %}
+			{% endwith %}
+		</form>
+	</div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Lending Club Cracked</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_2.css') }}">
+  </head>
+  <body>
+  	<div id='cssmenu'>
+    	<ul>
+      <li><a href="{{ url_for('index') }}"><span>Home</span></a></li>
+      <li><a href="{{ url_for('loanstats') }}"><span>Loan Stats</span></a></li>
+      <li><a href="{{ url_for('loan_input') }}"><span>My App</span></a></li>
+      <li><a href="{{ url_for('live_loans') }}"><span>Portfolio Builder</span></a></li>
+      <li><a href="{{ url_for('model') }}"><span>About the Model</span></a></li>
+      <li class='last'><a href="http://jingfengli.github.io/" target="_blank"><span>Hire Me</span></a></li>
+    	</ul>
+  	</div>
+
+    <div class='loanstatspic'>
+      <div class='loanstats'>
+        <div class='liveloantext'>        
+          <h2>
+            Which factors can be used to predict the outcome of a loan?
+          </h2>
+          <p>
+            I downloaded 120,000 loan records from Lending Club statistics. I examined how the outcome of a loan varied based on the borrower's location, FICO credit score, Lending Club grade, etc.
+            <br>
+          </p>
+        </div>
+      </div>
+    </div>
+ 
+    </div>
+    <div style="text-align:center">
+      <br>
+        <p style="font-size:30px; font-family:arial, sans-serif;"> Distribution of loans across the United States</p>
+      <br>
+        <iframe width="100%" height="700" frameborder="0" src="https://jingfengmli.cartodb.com/viz/7ceea30a-6702-11e5-8821-0e3a376473ab/embed_map" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+    </div>
+    <br>
+      <img src="{{ url_for('static', filename='Grade.png') }}" alt="Mountain View" style="width:1200px;height:600px;">
+    <br>
+      <img src="{{ url_for('static', filename='FICO.png') }}" alt="Mountain View" style="width:1200px;height:800px;">
+    <br>
+      <img src="{{ url_for('static', filename='home.png') }}" alt="Mountain View" style="width:1200px;height:600px;">
+    <br>
+
+  </body>
+</html>

@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Lending Club Cracked</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style_2.css') }}">
+  {{ js_resources|indent(4)|safe }}
+  {{ css_resources|indent(4)|safe }}
+
+  {{ plot_script|indent(4)|safe }}
+  {{ plot_script2|indent(4)|safe }}
+</head>
+
+<body>
+	    <!-- Navigation -->
+	<div id='cssmenu'>
+  	<ul>
+      <li><a href="{{ url_for('index') }}"><span>Home</span></a></li>
+      <li><a href="{{ url_for('loanstats') }}"><span>Loan Stats</span></a></li>
+      <li><a href="{{ url_for('loan_input') }}"><span>My App</span></a></li>
+      <li><a href="{{ url_for('live_loans') }}"><span>Portfolio Builder</span></a></li>
+      <li><a href="{{ url_for('model') }}"><span>About the Model</span></a></li>
+      <li class='last'><a href="http://jingfengli.github.io/" target="_blank"><span>Hire Me</span></a></li>
+  	</ul>
+  </div>
+
+  <div class='predictionfailure'>
+    <div class='prediction'>
+      <div class='predictiontext'>        
+          <div class='predictionh1'> 
+            Prediction :
+          </div>
+          <div class='predictiontext'>
+            <p> Success rate: <b> <font color='#CA6C0D'> {{prob}}  </font></b> % </p> 
+            <p> <u>You {{invest}} invest! </u></p> <br>
+
+            <p> Scored: {{score}} / 100</p>
+            <p> The loan beats <b>{{beats}} % </b> loans with the same LC grade </p>   
+          </div>
+      </div>
+    </div>
+  </div>
+  <div class="bk-bs-container" style="background-color:#dbe0eb">
+    <div class="bk-bs-row">
+      <div>
+          <div>
+              {{ plot_div|indent(4)|safe }}
+          </div>
+      </div>
+      <div>
+          <div>
+              {{ plot_div2|indent(4)|safe }}
+          </div>
+      </div>
+    </div>
+  </div>
+  </body>
+</html>

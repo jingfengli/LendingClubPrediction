@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Lending Club Cracked</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style_2.css') }}">
+  {{ js_resources|indent(4)|safe }}
+  {{ css_resources|indent(4)|safe }}
+  {{ plot_script2|indent(4)|safe }}
+
+</head>
+<body>
+	<div id='cssmenu'>
+  	<ul>
+      <li><a href="{{ url_for('index') }}"><span>Home</span></a></li>
+      <li><a href="{{ url_for('loanstats') }}"><span>Loan Stats</span></a></li>
+      <li><a href="{{ url_for('loan_input') }}"><span>My App</span></a></li>
+      <li><a href="{{ url_for('live_loans') }}"><span>Portfolio Builder</span></a></li>
+      <li><a href="{{ url_for('model') }}"><span>About the Model</span></a></li>
+      <li class='last'><a href="http://jingfengli.github.io/" target="_blank"><span>Hire Me</span></a></li>
+  	</ul>
+	</div>
+  <div class="modelinfo">
+      <div class='loanpadd'>
+        <div class='inputtext'>        
+          <h2>
+            The Model
+          </h2>
+          <p>
+            I built an ensemble model, including gradient boosting decision tree, naive bayes, logistic regression, and random forest (random forest is not included in the current version of the web app, and thus is not included in the graph). Gradient boosting decision tree and random forest are included to account for the possiblity of non-linearal relationships between the features and the outcome of individual loans. Naive bayes and logistic regression are included to combine information between different features. 
+            <br>
+            The predictions of these models are then combined using logistic regression to generate a final prediction. 
+          </p>
+        </div>
+      </div>
+      <div class="inputcontainer" style="float:right">   
+        <br><br>
+        <img src="{{ url_for('static', filename='models.jpg') }}" alt="Mountain View" style="width:100%">
+      </div>
+  </div>
+  <div style="background-color:#FFEBB5">
+    <div class='inputtext'>        
+      <h2>
+        Validation of the model
+      </h2>
+      <p>
+        Historical data were split into two groups: 4/5 served as the training dataset (n=149549), and 1/5 served as the test dataset (n=37388).
+        The model is constructed using the training dataset, and its performance is then cross-validated on the test dataset. Below is the confusion matrix, using a score of 50 as the decision boundary:
+
+        <table style="width:100%">
+          <tr>
+            <td> </td>
+            <td>True Success</td>    
+            <td>True Failure</td>
+          </tr>
+          <tr>
+            <td>Predicted Success</td>
+            <td>24667</td>    
+            <td>2174</td>
+          </tr>
+          <tr>
+            <td>Predicted Failure</td>
+            <td>7148</td>    
+            <td>3399</td>
+          </tr>
+        </table>
+
+        <br>
+        <br>
+        Using a score of 50 as the decision boundary, the recall is 77.5%, and the precision is 91.9% (risk of 8.1%). 
+        <br>
+        ** Recall: the percentage of true successful loans identified by the model. Recall reflects the extent to which the model misses good investment opportunities. Higher recall indicates less missed opportunity. 
+        Precision: the true success rate among the loans predicted as successful. Precision reflects the risk of an individual investment. Higher precision indicates lower risk.
+        <br>
+        <br>
+        Recall and precision are affected by the decision boundary (The relationship is illustrated below using historical data). 
+        A conservative decision boundary (only acceptting loans with a very high score) leads to low recall but high precision, excluding lots of good investment opportunities but also posing low risk. 
+      </p>
+    </div>
+    <div class="bk-bs-container" style="background-color:#FFEBB5">
+      <div class="bk-bs-row">
+        <div>
+              {{ plot_div2|indent(4)|safe }}
+        </div>
+      </div>
+    </div>
+  </div>
+  </body>
+</html>
